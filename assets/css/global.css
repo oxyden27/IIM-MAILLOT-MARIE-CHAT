@@ -1,0 +1,74 @@
+/* line 1, ../sass/global.scss */
+body {
+  font-family: Lato;
+  background-color: lightslategrey;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 9, ../sass/global.scss */
+.container-fluid {
+  margin-bottom: 70px;
+}
+
+/* line 13, ../sass/global.scss */
+#alert-status {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+}
+
+/* line 20, ../sass/global.scss */
+#message-form {
+  position: fixed;
+  width: 95%;
+  bottom: 2%;
+  left: 2.5%;
+  right: 2.5%;
+}
+
+/* line 28, ../sass/global.scss */
+#message-form .form-group {
+  width: 100%;
+}
+
+/* line 32, ../sass/global.scss */
+#message-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  min-width: 15%;
+}
+
+/* line 40, ../sass/global.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 44, ../sass/global.scss */
+.zone-user {
+  border: 1PX SOLID white;
+  padding: 20px;
+  border-radius: 10px;
+  padding-top: 5px;
+  margin-top: 20px;
+}
+
+/* line 52, ../sass/global.scss */
+.row {
+  margin: 0px;
+}
+
+/* line 56, ../sass/global.scss */
+.container-fluid {
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 90%;
+}

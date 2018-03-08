@@ -1,0 +1,64 @@
+        body {
+            font-family: Lato;
+            background-color: lightslategrey;
+            color: white;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .container-fluid {
+            margin-bottom: 70px;
+        }
+        
+        #alert-status {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: auto;
+        }
+        
+        #message-form {
+            position: fixed;
+            width: 95%;
+            bottom: 2%;
+            left: 2.5%;
+            right: 2.5%;
+        }
+        
+        #message-form .form-group {
+            width: 100%;
+        }
+        
+        #message-form button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 100;
+            min-width: 15%
+        }
+        
+        .bold {
+            font-weight: bold
+        }
+        
+        .zone-user {
+            border: 1PX SOLID white;
+            padding: 20px;
+            border-radius: 10px;
+            padding-top: 5px;
+            margin-top: 20px;
+        }
+        
+        .row{
+            margin: 0px;
+        }
+        
+        .container-fluid {
+	            height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 90%;
+        }
