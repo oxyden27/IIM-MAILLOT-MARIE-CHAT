@@ -1,26 +1,246 @@
 /* line 1, ../sass/global.scss */
 body {
-  font-family: Lato;
-  background-color: lightslategrey;
+  font-family: SF Optimized, system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+  letter-spacing: -0.01em;
+  background-color: white;
   color: white;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+/* line 11, ../sass/global.scss */
+body .logo {
+  background-image: url(../css/img/logo.png);
+  position: absolute;
+  display: inline-block;
+  left: 10px;
+  top: 5px;
+  width: 120Px;
+  height: 40Px;
+  background-size: cover;
+}
+/* line 21, ../sass/global.scss */
+body div[class^="col-"] {
+  padding: 0px;
+}
+/* line 24, ../sass/global.scss */
+body li {
+  list-style: none;
+}
+/* line 26, ../sass/global.scss */
+body li::before {
+  content: '';
+  background-image: url(../css/img/user-silhouette.png);
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* line 40, ../sass/global.scss */
+body h1 {
+  font-size: 17px;
+}
+/* line 43, ../sass/global.scss */
+body h2 {
+  font-size: 24px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+/* line 48, ../sass/global.scss */
+body h3 {
+  font-size: 16px;
+  font-weight: lighter;
+}
+/* line 52, ../sass/global.scss */
+body .headbar {
+  background-color: #4267b2;
+  border-bottom: 1px solid #29487d;
+  color: #fff;
+  min-height: 50px;
+}
+/* line 57, ../sass/global.scss */
+body .headbar h1 {
+  display: inline-block;
+  margin-top: 15px;
+  padding-left: 20px;
+}
+/* line 62, ../sass/global.scss */
+body .headbar .name-channel {
+  text-align: center;
+  display: flex;
+  height: 50px;
+}
+/* line 66, ../sass/global.scss */
+body .headbar .name-channel h2 {
+  margin: auto;
+}
+/* line 72, ../sass/global.scss */
+body .container-fluid .name-channel-message {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 50px;
+  display: flex;
+}
+/* line 77, ../sass/global.scss */
+body .container-fluid .name-channel-message h3 {
+  margin: auto;
+}
+/* line 81, ../sass/global.scss */
+body .container-fluid #alert-status {
+  margin-top: 13px;
+  padding-right: 20px;
+  color: white;
+  position: absolute;
+}
+/* line 87, ../sass/global.scss */
+body .container-fluid .alert-success {
+  background-color: transparent;
+}
+/* line 90, ../sass/global.scss */
+body .container-fluid .zone-user {
+  padding-left: 0px;
+  height: calc(100vh - 50px );
+}
+/* line 93, ../sass/global.scss */
+body .container-fluid .zone-user #users {
+  text-transform: capitalize;
+  overflow-y: auto;
+  min-height: calc( 100vh - 100px );
+  max-height: calc( 100vh - 100px );
+}
+/* line 98, ../sass/global.scss */
+body .container-fluid .zone-user #users li {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+/* line 105, ../sass/global.scss */
+body .container-fluid .zone-messages {
+  padding-top: 0px;
+  padding-left: 0px;
+}
+/* line 108, ../sass/global.scss */
+body .container-fluid .zone-messages .name-channel-message {
+  display: flex;
+}
+/* line 110, ../sass/global.scss */
+body .container-fluid .zone-messages .name-channel-message h2 {
+  margin: auto;
+}
+/* line 114, ../sass/global.scss */
+body .container-fluid .zone-messages .row {
+  min-height: calc(100vh - 50px);
+}
+/* line 118, ../sass/global.scss */
+body .container-fluid #message-form {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  float: none;
+  margin: 0 auto;
+  padding: 0px;
+  height: 50px;
+}
+/* line 128, ../sass/global.scss */
+body .container-fluid #message-form .input-group-addon {
+  border-left: 0px;
+  padding: 0px;
+}
+/* line 133, ../sass/global.scss */
+body .container-fluid .border {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* line 136, ../sass/global.scss */
+body .container-fluid #messages {
+  padding-left: 20px;
+  min-height: calc( 100vh - 150px);
+  overflow-y: auto;
+  max-height: calc( 100vh - 150px);
+}
+/* line 141, ../sass/global.scss */
+body .container-fluid #messages .line-chat:nth-child(1) {
+  margin-top: 20px;
+}
+/* line 144, ../sass/global.scss */
+body .container-fluid #messages .username-message {
+  display: block;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.1;
+  margin-bottom: 1px;
+  overflow: hidden;
+  padding-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 50px;
+}
+/* line 158, ../sass/global.scss */
+body .container-fluid #messages .pic-username-message {
+  background-image: url(../css/img/user-silhouette.png);
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* line 170, ../sass/global.scss */
+body .container-fluid #messages .message-chat {
+  background-color: #f1f0f0;
+  color: black;
+  margin: 1px 0;
+  padding: 6px 12px;
+  border-bottom-left-radius: 1.3em;
+  border-bottom-right-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-top-left-radius: 1.3em;
+  word-wrap: break-word;
+  font-size: 14px;
+  vertical-align: sub;
+}
+/* line 184, ../sass/global.scss */
+body .container-fluid #messages .date-chat {
+  font-size: 12px;
+  vertical-align: sub;
+}
+/* line 189, ../sass/global.scss */
+body .container-fluid input#message {
+  font-size: 14Px;
+  width: 100%;
+  border-left: none;
+  border-radius: 0px;
+  height: 50px;
 }
 
-/* line 9, ../sass/global.scss */
+/* line 199, ../sass/global.scss */
 .container-fluid {
   margin-bottom: 70px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
-/* line 13, ../sass/global.scss */
+/* line 205, ../sass/global.scss */
 #alert-status {
   position: fixed;
   top: 0;
   right: 0;
-  width: auto;
+  # width: auto;
 }
 
-/* line 20, ../sass/global.scss */
+/* line 212, ../sass/global.scss */
 #message-form {
   position: fixed;
   width: 95%;
@@ -29,46 +249,38 @@ body {
   right: 2.5%;
 }
 
-/* line 28, ../sass/global.scss */
+/* line 220, ../sass/global.scss */
 #message-form .form-group {
   width: 100%;
 }
 
-/* line 32, ../sass/global.scss */
+/* line 224, ../sass/global.scss */
 #message-form button {
   position: absolute;
+  padding-bottom: 0px;
   right: 0;
   top: 0;
   z-index: 100;
-  min-width: 15%;
+  min-width: 15.5%;
+  border-radius: 0px;
+  padding: 0px;
+  height: 100%;
+  font-size: 16px;
 }
 
-/* line 40, ../sass/global.scss */
+/* line 237, ../sass/global.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 44, ../sass/global.scss */
-.zone-user {
-  border: 1PX SOLID white;
-  padding: 20px;
-  border-radius: 10px;
-  padding-top: 5px;
-  margin-top: 20px;
-}
-
-/* line 52, ../sass/global.scss */
+/* line 241, ../sass/global.scss */
 .row {
   margin: 0px;
 }
 
-/* line 56, ../sass/global.scss */
+/* line 245, ../sass/global.scss */
 .container-fluid {
-  height: 100%;
   background-color: white;
-  border-radius: 10px;
   color: black;
   margin: 0 auto;
-  margin-top: 10%;
-  width: 90%;
 }

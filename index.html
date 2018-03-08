@@ -6,38 +6,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/global.css">
-    <style>
-        
-
-        
-    </style>
+    <link rel="icon" type="image/png" href="assets/css/img/favicon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
 </head>
 
 <body>
+    <div class="headbar">
+        <div class="col-md-2">
+           <div class="logo"></div>
+           </div>
+        <div class="col-md-8 name-channel">
+            <h2>Name of channel</h2> </div>
+    </div>
     <div class="container-fluid">
-        <div id="alert-status" class="alert alert-warning" role="alert">Loading...</div>
-        <div class="col-md-3 zone-user">
+        <div id="alert-status" class="" role="alert">Loading...</div>
+        <div class="col-md-2 zone-user">
             <div class="row">
-                <h2>Users
-            </h2>
+               <div class="name-channel-message">
+                    <h3>
+                       Messenger
+                   </h3> </div>
                 <div id="users"></div>
             </div>
         </div>
-        <div class="col-md-9 zone-user">
+        <div class="col-md-10 zone-messages border">
             <div class="row">
-                <h2>Messages</h2>
+                <div class="name-channel-message">
+                    <h3>
+                       Name of Channel
+                   </h3> </div>
                 <div id="messages"></div>
+                <form id="message-form" class="form-inline" action="">
+                    <div class="form-group">
+                        <label class="sr-only" for="message">Message</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"></div>
+                            <input type="text" class="form-control form-control-lg" id="message" placeholder="Écrivez un message..." autocomplete="off" autofocus> </div>
+                    </div>
+                   
+                </form>
             </div>
         </div>
-        <form id="message-form" class="form-inline" action="">
-            <div class="form-group">
-                <label class="sr-only" for="message">Message</label>
-                <div class="input-group">
-                    <div class="input-group-addon"> <i class="fa fa-2x fa-comments-o" aria-hidden="true"></i> </div>
-                    <input type="text" class="form-control form-control-lg" id="message" placeholder="Your message here..." autocomplete="off" autofocus> </div>
-            </div>
-            <button type="submit" class="btn btn-lg btn-primary">Send</button>
-        </form>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -63,7 +72,7 @@
                 return false;
             });
             socket.on('connect', (data) => {
-                updateStatus('Connected', 'success');
+                updateStatus('Connecté', 'success');
                 if (typeof (Storage) !== undefined) {
                     username = localStorage.getItem('username');
                     console.log(`Username from localStorage is ${username}`)
@@ -100,11 +109,11 @@
             socket.on('chat.message', (json) => {
                 console.log('chat.message => ', json);
                 const data = JSON.parse(json)
-                    , currentUsername = username === data.username ? 'me' : data.username
-                    , className = username === data.username ? 'text-success' : '';
+                    , currentUsername = username === data.username ? 'data.username' : data.username
+                    , className = username === data.username ? '' : '';
                 selectorCache.messages.prepend($(`
-                <p data-username="${data.username}">
-                    <span class="bold ${className}">${currentUsername}: </span> ${data.message}
+                <p class="line-chat" data-username="${data.username}">
+<span class="username-message ${className}">${currentUsername} </span> <span class="pic-username-message"></span><span class="message-chat"> ${data.message}</span><span class="date-chat"> ${moment(data.date).format("HH:mm")}</span>
                 </p>
             `));
             });

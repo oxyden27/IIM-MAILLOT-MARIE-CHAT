@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
     socket.on('chat.message', (message) => {
         consoleLog('chat', 'message', ('[' + socket.username + ']').bold + ' ' + message);
 
-        const json = JSON.stringify({username: socket.username, message});
+        const json = JSON.stringify({username: socket.username, message, 'date': new Date() });
 
         redisClient.lpush('messages', json, (err, reply) => {
             console.log('redis lpush => ' + reply);
