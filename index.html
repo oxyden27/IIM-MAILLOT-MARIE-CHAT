@@ -30,10 +30,7 @@
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+  <div class="dropdown-menu" id="channelList" aria-labelledby="dropdownMenuButton">
   </div>
 </div>
         
@@ -157,7 +154,7 @@
         socket.on('channel.getList', channels => {
             for (let channel of channels) {
                 
-                selectorCache.channelList.append($(`<li><a href="#" class="channel" data-channel="${channel}">${channel}</a></li>`))
+                selectorCache.channelList.append($(`<li><a href="#" class="channel dropdown-item" data-channel="${channel}">${channel}</a></li>`))
             }
         });
 
