@@ -75,7 +75,7 @@
                 updateStatus('Connecté', 'success');
                 if (typeof (Storage) !== undefined) {
                     username = localStorage.getItem('username');
-                    console.log(`Username from localStorage is ${username}`)
+//                    console.log(`Username from localStorage is ${username}`)
                 }
                 while (username === null || username === '') {
                     username = prompt('What is your username?');
@@ -88,7 +88,7 @@
             });
             // When a user pick his username
             socket.on('chat.join', (json) => {
-                console.log('chat.join => ', json);
+//                console.log('chat.join => ', json);
                 const data = JSON.parse(json);
                 selectorCache.users.append($(`
                 <li data-username="${data.username}">
@@ -97,9 +97,9 @@
             `));
             });
             socket.on('chat.add_user', (json) => {
-                console.log('chat.add_user => ', json);
+//                console.log('chat.add_user => ', json);
                 const data = JSON.parse(json);
-                console.log('add_user => ' + data.username);
+//                console.log('add_user => ' + data.username);
                 selectorCache.users.append($(`
                 <li data-username="${data.username}">
                     ${data.username}
@@ -107,20 +107,22 @@
             `));
             });
             socket.on('chat.message', (json) => {
-                console.log('chat.message => ', json);
+//                console.log('chat.message => ', json);
                 const data = JSON.parse(json)
-                    , currentUsername = username === data.username ? 'data.username' : data.username
+                    , currentUsername = username === data.username ? data.username : data.username
                     , className = username === data.username ? '' : '';
+                console.log(currentUsername);
+                console.log(data.username);
                 selectorCache.messages.prepend($(`
-                <p class="line-chat" data-username="${data.username}">
+                <p class="line-chat" data-username="${currentUsername != data.username ? 'droite' : 'gauche'}">
 <span class="username-message ${className}">${currentUsername} </span> <span class="pic-username-message"></span><span class="message-chat"> ${data.message}</span><span class="date-chat"> ${moment(data.date).format("HH:mm")}</span>
                 </p>
             `));
             });
             socket.on('chat.disconnect', (json) => {
-                console.log('chat.disconnect => ', json);
+//                console.log('chat.disconnect => ', json);
                 const data = JSON.parse(json);
-                console.log(json, data, data.username + ' leave channel');
+//                console.log(json, data, data.username + ' leave channel');
                 selectorCache.users.find(`li[data-username="${data.username}"]`).remove();
             });
             socket.on('disconnect', () => {
