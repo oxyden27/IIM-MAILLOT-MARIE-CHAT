@@ -135,6 +135,7 @@ body {
         }
         #messages {
             padding-left: 20px;
+            padding-right: 20px;
             min-height: calc( 100vh - 150px);
             overflow-y: auto;
             max-height: calc( 100vh - 150px);
@@ -250,4 +251,12 @@ body {
 .typing{
     display: none;
     margin-top: -40px;
+}
+.text-right {
+    text-align: right;
+    
+    .message-chat{
+            background-color: #4267b2!important;
+        color: white!important;
+    }
 }

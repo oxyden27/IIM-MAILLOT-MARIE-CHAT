@@ -161,15 +161,16 @@ body .container-fluid .border {
 /* line 136, ../sass/global.scss */
 body .container-fluid #messages {
   padding-left: 20px;
+  padding-right: 20px;
   min-height: calc( 100vh - 150px);
   overflow-y: auto;
   max-height: calc( 100vh - 150px);
 }
-/* line 141, ../sass/global.scss */
+/* line 142, ../sass/global.scss */
 body .container-fluid #messages .line-chat:nth-child(1) {
   margin-top: 20px;
 }
-/* line 144, ../sass/global.scss */
+/* line 145, ../sass/global.scss */
 body .container-fluid #messages .username-message {
   display: block;
   text-transform: capitalize;
@@ -184,7 +185,7 @@ body .container-fluid #messages .username-message {
   white-space: nowrap;
   padding-left: 50px;
 }
-/* line 158, ../sass/global.scss */
+/* line 159, ../sass/global.scss */
 body .container-fluid #messages .pic-username-message {
   background-image: url(../css/img/user-silhouette.png);
   width: 35px;
@@ -197,7 +198,7 @@ body .container-fluid #messages .pic-username-message {
   background-size: contain;
   background-repeat: no-repeat;
 }
-/* line 170, ../sass/global.scss */
+/* line 171, ../sass/global.scss */
 body .container-fluid #messages .message-chat {
   background-color: #f1f0f0;
   color: black;
@@ -211,12 +212,12 @@ body .container-fluid #messages .message-chat {
   font-size: 14px;
   vertical-align: sub;
 }
-/* line 184, ../sass/global.scss */
+/* line 185, ../sass/global.scss */
 body .container-fluid #messages .date-chat {
   font-size: 12px;
   vertical-align: sub;
 }
-/* line 189, ../sass/global.scss */
+/* line 190, ../sass/global.scss */
 body .container-fluid input#message {
   font-size: 14Px;
   width: 100%;
@@ -225,14 +226,14 @@ body .container-fluid input#message {
   height: 50px;
 }
 
-/* line 199, ../sass/global.scss */
+/* line 200, ../sass/global.scss */
 .container-fluid {
   margin-bottom: 70px;
   padding-right: 0px;
   padding-left: 0px;
 }
 
-/* line 205, ../sass/global.scss */
+/* line 206, ../sass/global.scss */
 #alert-status {
   position: fixed;
   top: 0;
@@ -240,7 +241,7 @@ body .container-fluid input#message {
   width: auto;
 }
 
-/* line 212, ../sass/global.scss */
+/* line 213, ../sass/global.scss */
 #message-form {
   position: fixed;
   width: 95%;
@@ -249,12 +250,12 @@ body .container-fluid input#message {
   right: 2.5%;
 }
 
-/* line 220, ../sass/global.scss */
+/* line 221, ../sass/global.scss */
 #message-form .form-group {
   width: 100%;
 }
 
-/* line 224, ../sass/global.scss */
+/* line 225, ../sass/global.scss */
 #message-form button {
   position: absolute;
   right: 0;
@@ -267,25 +268,35 @@ body .container-fluid input#message {
   font-size: 16px;
 }
 
-/* line 236, ../sass/global.scss */
+/* line 237, ../sass/global.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 240, ../sass/global.scss */
+/* line 241, ../sass/global.scss */
 .row {
   margin: 0px;
 }
 
-/* line 244, ../sass/global.scss */
+/* line 245, ../sass/global.scss */
 .container-fluid {
   background-color: white;
   color: black;
   margin: 0 auto;
 }
 
-/* line 250, ../sass/global.scss */
+/* line 251, ../sass/global.scss */
 .typing {
   display: none;
   margin-top: -40px;
+}
+
+/* line 255, ../sass/global.scss */
+.text-right {
+  text-align: right;
+}
+/* line 258, ../sass/global.scss */
+.text-right .message-chat {
+  background-color: #4267b2 !important;
+  color: white !important;
 }
