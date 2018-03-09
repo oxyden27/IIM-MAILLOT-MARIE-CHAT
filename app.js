@@ -91,6 +91,11 @@ io.on('connection', (socket) => {
         });
     });
 
+    socket.on('typing', function (data) {
+        console.log(data);
+        socket.broadcast.emit('typing', data);
+    });
+
     socket.on('disconnect', () => {
         consoleLog('socket', 'disconnect', ('[' + socket.username + ']').bold + ' socket closed');
     });

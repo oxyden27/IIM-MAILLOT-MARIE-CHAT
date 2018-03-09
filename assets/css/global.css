@@ -237,7 +237,7 @@ body .container-fluid input#message {
   position: fixed;
   top: 0;
   right: 0;
-  # width: auto;
+  width: auto;
 }
 
 /* line 212, ../sass/global.scss */
@@ -257,30 +257,35 @@ body .container-fluid input#message {
 /* line 224, ../sass/global.scss */
 #message-form button {
   position: absolute;
-  padding-bottom: 0px;
   right: 0;
   top: 0;
   z-index: 100;
   min-width: 15.5%;
-  border-radius: 0px;
-  padding: 0px;
+  border-radius: 0;
+  padding: 0;
   height: 100%;
   font-size: 16px;
 }
 
-/* line 237, ../sass/global.scss */
+/* line 236, ../sass/global.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 241, ../sass/global.scss */
+/* line 240, ../sass/global.scss */
 .row {
   margin: 0px;
 }
 
-/* line 245, ../sass/global.scss */
+/* line 244, ../sass/global.scss */
 .container-fluid {
   background-color: white;
   color: black;
   margin: 0 auto;
+}
+
+/* line 250, ../sass/global.scss */
+.typing {
+  display: none;
+  margin-top: -40px;
 }

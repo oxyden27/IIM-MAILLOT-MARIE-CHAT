@@ -39,32 +39,36 @@
                        Name of Channel
                    </h3> </div>
                 <div id="messages"></div>
+                <div class="typing">Is typing....</div>
                 <form id="message-form" class="form-inline" action="">
                     <div class="form-group">
                         <label class="sr-only" for="message">Message</label>
                         <div class="input-group">
                             <div class="input-group-addon"></div>
-                            <input type="text" class="form-control form-control-lg" id="message" placeholder="Écrivez un message..." autocomplete="off" autofocus> </div>
+                            <input type="text" class="form-control form-control-lg typing-message" id="message" placeholder="Écrivez un message..." autocomplete="off" autofocus> </div>
                     </div>
-                   
+
                 </form>
             </div>
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        (function ($) {
-            const selectorCache = {
-                status: $('#alert-status')
-                , users: $('#users')
-                , currentUser: $('#current-user')
-                , messages: $('#messages')
-                , messageForm: $('#message-form')
-                , messageInput: $('#message')
-            , };
-            let socket = io()
-                , username = null;
+<script>
+    (function ($) {
+        const selectorCache = {
+            document: $(document)
+            , status: $('#alert-status')
+            , users: $('#users')
+            , currentUser: $('#current-user')
+            , messages: $('#messages')
+            , messageForm: $('#message-form')
+            , messageInput: $('#message')
+            , channelList: $('#channelList')
+            ,
+        };
+        let socket = io()
+            , username = null;
 
         let room = "abc123";
 
@@ -100,58 +104,28 @@
             const data = JSON.parse(json);
             selectorCache.users.append($(`
               <li data-username="${data.username}">
-            function updateStatus(text, status) {
-                selectorCache.status.removeClass('alert-danger alert-warning alert-success').addClass('alert-' + status).html(text);
-            }
-            selectorCache.messageForm.on('submit', () => {
-                socket.emit('chat.message', selectorCache.messageInput.val());
-                selectorCache.messageInput.val('');
-                return false;
-            });
-            socket.on('connect', (data) => {
-                updateStatus('Connecté', 'success');
-                if (typeof (Storage) !== undefined) {
-                    username = localStorage.getItem('username');
-//                    console.log(`Username from localStorage is ${username}`)
-                }
-                while (username === null || username === '') {
-                    username = prompt('What is your username?');
-                    if (typeof (Storage) !== undefined) {
-                        localStorage.setItem('username', username);
-                    }
-                }
-                selectorCache.currentUser.html(username);
-                socket.emit('chat.join', username);
-            });
-            // When a user pick his username
-            socket.on('chat.join', (json) => {
-//                console.log('chat.join => ', json);
-                const data = JSON.parse(json);
-                selectorCache.users.append($(`
-                <li data-username="${data.username}">
                     ${data.username}
                 </li>
             `));
-            });
-            socket.on('chat.add_user', (json) => {
-//                console.log('chat.add_user => ', json);
-                const data = JSON.parse(json);
-//                console.log('add_user => ' + data.username);
-                selectorCache.users.append($(`
+        });
+
+        socket.on('chat.add_user', (json) => {
+            console.log('chat.add_user => ', json);
+            const data = JSON.parse(json);
+            console.log('add_user => ' + data.username);
+            selectorCache.users.append($(`
                 <li data-username="${data.username}">
                     ${data.username}
                 </li>
             `));
             });
             socket.on('chat.message', (json) => {
-//                console.log('chat.message => ', json);
+                console.log('chat.message => ', json);
                 const data = JSON.parse(json)
-                    , currentUsername = username === data.username ? data.username : data.username
+                    , currentUsername = username === data.username ? 'data.username' : data.username
                     , className = username === data.username ? '' : '';
-                console.log(currentUsername);
-                console.log(data.username);
                 selectorCache.messages.prepend($(`
-                <p class="line-chat" data-username="${currentUsername != data.username ? 'droite' : 'gauche'}">
+                <p class="line-chat" data-username="${data.username}">
 <span class="username-message ${className}">${currentUsername} </span> <span class="pic-username-message"></span><span class="message-chat"> ${data.message}</span><span class="date-chat"> ${moment(data.date).format("HH:mm")}</span>
                 </p>
             `));
@@ -178,6 +152,31 @@
             console.log('emit message');
             socket.emit('chat.testMessage', 'test');
         });
+
+        let timeout;
+
+        function timeoutFunction() {
+            typing = false;
+            socket.emit("typing", false);
+        }
+
+        $('.typing-message').keyup(function() {
+            console.log('happening');
+            typing = true;
+            socket.emit('typing', 'typing...');
+            clearTimeout(timeout);
+            timeout = setTimeout(timeoutFunction, 2000);
+        });
+
+        socket.on('typing', function(data) {
+            if (data) {
+                console.log(data);
+                $('.typing').fadeIn();
+            } else {
+                $('.typing').fadeOut();
+            }
+        });
+
     })(jQuery);
 </script>
 </body>

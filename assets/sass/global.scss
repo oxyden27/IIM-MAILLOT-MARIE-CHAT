@@ -206,7 +206,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    # width: auto;
+    width: auto;
 }
 
 #message-form {
@@ -223,13 +223,12 @@ body {
 
 #message-form button {
     position: absolute;
-    padding-bottom: 0px;
     right: 0;
     top: 0;
     z-index: 100;
     min-width: 15.5%;
-    border-radius: 0px;
-    padding: 0px;
+    border-radius: 0;
+    padding: 0;
     height: 100%;
     font-size: 16px;
 }
@@ -246,4 +245,9 @@ body {
     background-color: white;
     color: black;
     margin: 0 auto;
+}
+
+.typing{
+    display: none;
+    margin-top: -40px;
 }
