@@ -3,8 +3,10 @@
 
 <head>
     <title>IIM - Node Chat with Socket and Redis</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
+          integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="icon" type="image/png" href="assets/css/img/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
@@ -17,6 +19,7 @@
            </div>
         <div class="col-md-8 name-channel">
             <h2>Name of channel</h2> </div>
+        <div id="channelList"></div>
     </div>
     <div class="container-fluid">
         <div id="alert-status" class="" role="alert">Loading...</div>
@@ -26,6 +29,7 @@
                     <h3>
                        Messenger
                    </h3> </div>
+
                 <div id="users"></div>
             </div>
         </div>
@@ -63,6 +67,40 @@
             let socket = io()
                 , username = null;
 
+        let room = "abc123";
+
+        function updateStatus(text, status) {
+            selectorCache.status.removeClass('alert-danger alert-warning alert-success').addClass('alert-' + status).html(text);
+        }
+
+        selectorCache.messageForm.on('submit', () => {
+            socket.emit('chat.message', selectorCache.messageInput.val());
+            selectorCache.messageInput.val('');
+            return false;
+        });
+
+        socket.on('connect', (data) => {
+            updateStatus('Connected', 'success');
+            if (typeof (Storage) !== undefined) {
+                username = localStorage.getItem('username');
+                console.log(`Username from localStorage is ${username}`)
+            }
+            while (username === null || username === '') {
+                username = prompt('What is your username?');
+                if (typeof (Storage) !== undefined) {
+                    localStorage.setItem('username', username);
+                }
+            }
+            selectorCache.currentUser.html(username);
+            socket.emit('chat.join', username);
+        });
+
+        // When a user pick his username
+        socket.on('chat.join', (json) => {
+            console.log('chat.join => ', json);
+            const data = JSON.parse(json);
+            selectorCache.users.append($(`
+              <li data-username="${data.username}">
             function updateStatus(text, status) {
                 selectorCache.status.removeClass('alert-danger alert-warning alert-success').addClass('alert-' + status).html(text);
             }
@@ -118,18 +156,31 @@
 <span class="username-message ${className}">${currentUsername} </span> <span class="pic-username-message"></span><span class="message-chat"> ${data.message}</span><span class="date-chat"> ${moment(data.date).format("HH:mm")}</span>
                 </p>
             `));
-            });
-            socket.on('chat.disconnect', (json) => {
-//                console.log('chat.disconnect => ', json);
-                const data = JSON.parse(json);
-//                console.log(json, data, data.username + ' leave channel');
-                selectorCache.users.find(`li[data-username="${data.username}"]`).remove();
-            });
-            socket.on('disconnect', () => {
-                updateStatus('Connection lost, trying to reconnect...', 'danger');
-            });
-        })(jQuery);
-    </script>
+        });
+
+        socket.on('channel.getList', channels => {
+            for (let channel of channels) {
+                selectorCache.channelList.append($(`<li><a href="#" class="channel" data-channel="${channel}">${channel}</a></li>`))
+            }
+        });
+
+        socket.on('disconnect', () => {
+            updateStatus('Connection lost, trying to reconnect...', 'danger');
+        });
+
+        selectorCache.document.on('click', "#channelList li > a", function (e) {
+            e.preventDefault();
+
+            selectorCache.messages.empty();
+            socket.emit('chatroom.joinChannel', $(this).data('channel'))
+        });
+
+        selectorCache.document.on('click', "#btn", function (e) {
+            console.log('emit message');
+            socket.emit('chat.testMessage', 'test');
+        });
+    })(jQuery);
+</script>
 </body>
 
 </html>
