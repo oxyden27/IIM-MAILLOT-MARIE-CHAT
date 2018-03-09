@@ -6,8 +6,8 @@ body {
     width: 100%;
     min-height: 100vh;
     height: 100vh;
-    overflow-y: hidden;
     overflow-x: hidden;
+    overflow-y: hidden;
     .logo {
         background-image: url(../css/img/logo.png);
         position: absolute;
@@ -21,22 +21,7 @@ body {
     div[class^="col-"] {
         padding: 0px;
     }
-    li {
-        list-style: none;
-        &::before {
-            content: '';
-                background-image: url(../css/img/user-silhouette.png);
-                width: 40px;
-                height: 40px;
-                display: inline-block;
-                border: 1px solid grey;
-                border-radius: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-                background-size: contain;
-                background-repeat: no-repeat;
-        }
-    }
+    
     h1 {
         font-size: 17px;
     }
@@ -96,9 +81,24 @@ body {
                 min-height: calc( 100vh - 100px );
                 max-height: calc( 100vh - 100px );
                 li {
+                    list-style: none;
                     padding-bottom: 10px;
                     padding-top:10px;
                     margin-left: 10px;
+                    
+                      &::before {
+                        content: '';
+                            background-image: url(../css/img/user-silhouette.png);
+                            width: 40px;
+                            height: 40px;
+                            display: inline-block;
+                            border: 1px solid grey;
+                            border-radius: 20px;
+                            vertical-align: middle;
+                            margin-right: 5px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
                 }
             }
         }
@@ -185,6 +185,7 @@ body {
             .date-chat {
                 font-size: 12px;
                 vertical-align: sub;
+                margin-left: 5Px;
             }
         }
         input#message {
@@ -259,4 +260,21 @@ body {
             background-color: #4267b2!important;
         color: white!important;
     }
+}
+#dropdownMenuButton{
+
+    float: right;
+    margin: auto;
+    margin-top: 5px;
+    margin-right: 10px;
+    
+}
+
+.open>.dropdown-menu {
+    display: block;
+    float: right;
+    /* right: 0px; */
+    left: inherit;
+    top: 47px;
+    right: 9px;
 }

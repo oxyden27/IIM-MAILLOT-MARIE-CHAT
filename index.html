@@ -17,21 +17,22 @@
 
 <body>
     <div class="headbar">
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-3">
            <div class="logo"></div>
            </div>
-        <div class="col-md-8 name-channel">
+        <div class="col-md-8 col-xs-6 name-channel">
             <h2 class="name-of-channel-title" >Général</h2> </div>
        
         
         
-        
+        <div class="col-md-2 col-xs-3">
         <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" id="channelList" aria-labelledby="dropdownMenuButton">
-  </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Channels
+          </button>
+          <div class="dropdown-menu" id="channelList" aria-labelledby="dropdownMenuButton">
+          </div>
+        </div>
 </div>
         
         
@@ -39,8 +40,8 @@
         
     </div>
     <div class="container-fluid">
-        <div id="alert-status" class="" role="alert">Chargement...</div>
-        <div class="col-md-2 zone-user">
+<!--        <div id="alert-status" class="" role="alert">Chargement...</div>-->
+        <div class="col-md-2 col-xs-3 zone-user">
             <div class="row">
                <div class="name-channel-message">
                     <h3>
@@ -49,14 +50,14 @@
                 <div id="users"></div>
             </div>
         </div>
-        <div class="col-md-10 zone-messages border">
+        <div class="col-md-10 col-xs-9 zone-messages border">
             <div class="row">
                 <div class="name-channel-message">
                     <h3 class="name-of-channel-title">
                        Général
                    </h3> </div>
                 <div id="messages"></div>
-                <div class="typing">Is typing....</div>
+                <div class="typing">Est entrain d'écrire....</div>
                 <form id="message-form" class="form-inline" action="">
                     <div class="form-group">
                         <label class="sr-only" for="message">Message</label>
@@ -102,13 +103,13 @@
         });
 
         socket.on('connect', (data) => {
-            updateStatus('Connected', 'success');
+            updateStatus('Connecté', 'success');
             if (typeof (Storage) !== undefined) {
                 username = localStorage.getItem('username');
 //                console.log(`Username from localStorage is ${username}`)
             }
             while (username === null || username === '') {
-                username = prompt('What is your username?');
+                username = prompt('Quel est votre nom d\'utilisateur ?');
                 if (typeof (Storage) !== undefined) {
                     localStorage.setItem('username', username);
                 }
@@ -159,7 +160,7 @@
         });
 
         socket.on('disconnect', () => {
-            updateStatus('Connection lost, trying to reconnect...', 'danger');
+            updateStatus('Connection perdu, essayez de vous reconnecter...', 'danger');
         });
 
         selectorCache.document.on('click', "#channelList li > a", function (e) {
@@ -184,7 +185,7 @@
         $('.typing-message').keyup(function() {
 //            console.log('happening');
             typing = true;
-            socket.emit('typing', 'typing...');
+            socket.emit('typing', 'Est entrain d\'écrire...');
             clearTimeout(timeout);
             timeout = setTimeout(timeoutFunction, 2000);
         });

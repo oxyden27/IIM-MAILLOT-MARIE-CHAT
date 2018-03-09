@@ -7,8 +7,8 @@ body {
   width: 100%;
   min-height: 100vh;
   height: 100vh;
-  overflow-y: hidden;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 /* line 11, ../sass/global.scss */
 body .logo {
@@ -25,12 +25,86 @@ body .logo {
 body div[class^="col-"] {
   padding: 0px;
 }
-/* line 24, ../sass/global.scss */
-body li {
-  list-style: none;
+/* line 25, ../sass/global.scss */
+body h1 {
+  font-size: 17px;
 }
-/* line 26, ../sass/global.scss */
-body li::before {
+/* line 28, ../sass/global.scss */
+body h2 {
+  font-size: 24px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+/* line 33, ../sass/global.scss */
+body h3 {
+  font-size: 16px;
+  font-weight: lighter;
+}
+/* line 37, ../sass/global.scss */
+body .headbar {
+  background-color: #4267b2;
+  border-bottom: 1px solid #29487d;
+  color: #fff;
+  min-height: 50px;
+}
+/* line 42, ../sass/global.scss */
+body .headbar h1 {
+  display: inline-block;
+  margin-top: 15px;
+  padding-left: 20px;
+}
+/* line 47, ../sass/global.scss */
+body .headbar .name-channel {
+  text-align: center;
+  display: flex;
+  height: 50px;
+}
+/* line 51, ../sass/global.scss */
+body .headbar .name-channel h2 {
+  margin: auto;
+}
+/* line 57, ../sass/global.scss */
+body .container-fluid .name-channel-message {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 50px;
+  display: flex;
+}
+/* line 62, ../sass/global.scss */
+body .container-fluid .name-channel-message h3 {
+  margin: auto;
+}
+/* line 66, ../sass/global.scss */
+body .container-fluid #alert-status {
+  margin-top: 13px;
+  padding-right: 20px;
+  color: white;
+  position: absolute;
+}
+/* line 72, ../sass/global.scss */
+body .container-fluid .alert-success {
+  background-color: transparent;
+}
+/* line 75, ../sass/global.scss */
+body .container-fluid .zone-user {
+  padding-left: 0px;
+  height: calc(100vh - 50px );
+}
+/* line 78, ../sass/global.scss */
+body .container-fluid .zone-user #users {
+  text-transform: capitalize;
+  overflow-y: auto;
+  min-height: calc( 100vh - 100px );
+  max-height: calc( 100vh - 100px );
+}
+/* line 83, ../sass/global.scss */
+body .container-fluid .zone-user #users li {
+  list-style: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+/* line 89, ../sass/global.scss */
+body .container-fluid .zone-user #users li::before {
   content: '';
   background-image: url(../css/img/user-silhouette.png);
   width: 40px;
@@ -42,83 +116,6 @@ body li::before {
   margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
-}
-/* line 40, ../sass/global.scss */
-body h1 {
-  font-size: 17px;
-}
-/* line 43, ../sass/global.scss */
-body h2 {
-  font-size: 24px;
-  font-weight: lighter;
-  letter-spacing: 2px;
-}
-/* line 48, ../sass/global.scss */
-body h3 {
-  font-size: 16px;
-  font-weight: lighter;
-}
-/* line 52, ../sass/global.scss */
-body .headbar {
-  background-color: #4267b2;
-  border-bottom: 1px solid #29487d;
-  color: #fff;
-  min-height: 50px;
-}
-/* line 57, ../sass/global.scss */
-body .headbar h1 {
-  display: inline-block;
-  margin-top: 15px;
-  padding-left: 20px;
-}
-/* line 62, ../sass/global.scss */
-body .headbar .name-channel {
-  text-align: center;
-  display: flex;
-  height: 50px;
-}
-/* line 66, ../sass/global.scss */
-body .headbar .name-channel h2 {
-  margin: auto;
-}
-/* line 72, ../sass/global.scss */
-body .container-fluid .name-channel-message {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  min-height: 50px;
-  display: flex;
-}
-/* line 77, ../sass/global.scss */
-body .container-fluid .name-channel-message h3 {
-  margin: auto;
-}
-/* line 81, ../sass/global.scss */
-body .container-fluid #alert-status {
-  margin-top: 13px;
-  padding-right: 20px;
-  color: white;
-  position: absolute;
-}
-/* line 87, ../sass/global.scss */
-body .container-fluid .alert-success {
-  background-color: transparent;
-}
-/* line 90, ../sass/global.scss */
-body .container-fluid .zone-user {
-  padding-left: 0px;
-  height: calc(100vh - 50px );
-}
-/* line 93, ../sass/global.scss */
-body .container-fluid .zone-user #users {
-  text-transform: capitalize;
-  overflow-y: auto;
-  min-height: calc( 100vh - 100px );
-  max-height: calc( 100vh - 100px );
-}
-/* line 98, ../sass/global.scss */
-body .container-fluid .zone-user #users li {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  margin-left: 10px;
 }
 /* line 105, ../sass/global.scss */
 body .container-fluid .zone-messages {
@@ -216,8 +213,9 @@ body .container-fluid #messages .message-chat {
 body .container-fluid #messages .date-chat {
   font-size: 12px;
   vertical-align: sub;
+  margin-left: 5Px;
 }
-/* line 190, ../sass/global.scss */
+/* line 191, ../sass/global.scss */
 body .container-fluid input#message {
   font-size: 14Px;
   width: 100%;
@@ -226,14 +224,14 @@ body .container-fluid input#message {
   height: 50px;
 }
 
-/* line 200, ../sass/global.scss */
+/* line 201, ../sass/global.scss */
 .container-fluid {
   margin-bottom: 70px;
   padding-right: 0px;
   padding-left: 0px;
 }
 
-/* line 206, ../sass/global.scss */
+/* line 207, ../sass/global.scss */
 #alert-status {
   position: fixed;
   top: 0;
@@ -241,7 +239,7 @@ body .container-fluid input#message {
   width: auto;
 }
 
-/* line 213, ../sass/global.scss */
+/* line 214, ../sass/global.scss */
 #message-form {
   position: fixed;
   width: 95%;
@@ -250,12 +248,12 @@ body .container-fluid input#message {
   right: 2.5%;
 }
 
-/* line 221, ../sass/global.scss */
+/* line 222, ../sass/global.scss */
 #message-form .form-group {
   width: 100%;
 }
 
-/* line 225, ../sass/global.scss */
+/* line 226, ../sass/global.scss */
 #message-form button {
   position: absolute;
   right: 0;
@@ -268,35 +266,53 @@ body .container-fluid input#message {
   font-size: 16px;
 }
 
-/* line 237, ../sass/global.scss */
+/* line 238, ../sass/global.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 241, ../sass/global.scss */
+/* line 242, ../sass/global.scss */
 .row {
   margin: 0px;
 }
 
-/* line 245, ../sass/global.scss */
+/* line 246, ../sass/global.scss */
 .container-fluid {
   background-color: white;
   color: black;
   margin: 0 auto;
 }
 
-/* line 251, ../sass/global.scss */
+/* line 252, ../sass/global.scss */
 .typing {
   display: none;
   margin-top: -40px;
 }
 
-/* line 255, ../sass/global.scss */
+/* line 256, ../sass/global.scss */
 .text-right {
   text-align: right;
 }
-/* line 258, ../sass/global.scss */
+/* line 259, ../sass/global.scss */
 .text-right .message-chat {
   background-color: #4267b2 !important;
   color: white !important;
+}
+
+/* line 264, ../sass/global.scss */
+#dropdownMenuButton {
+  float: right;
+  margin: auto;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+/* line 273, ../sass/global.scss */
+.open > .dropdown-menu {
+  display: block;
+  float: right;
+  /* right: 0px; */
+  left: inherit;
+  top: 47px;
+  right: 9px;
 }
