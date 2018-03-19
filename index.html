@@ -31,6 +31,7 @@
             Channels
           </button>
           <div class="dropdown-menu" id="channelList" aria-labelledby="dropdownMenuButton">
+
           </div>
         </div>
 </div>
@@ -85,7 +86,7 @@
             , messageForm: $('#message-form')
             , messageInput: $('#message')
             , channelList: $('#channelList')
-            ,
+            , addChannel: $('#add-channel')
         };
         let socket = io()
             , username = null;
@@ -157,6 +158,7 @@
                 
                 selectorCache.channelList.append($(`<li><a href="#" class="channel dropdown-item" data-channel="${channel}">${channel}</a></li>`))
             }
+            selectorCache.channelList.append($(`<li><a class="channel dropdown-item" id="add-channel">Add channel</a></li>`))
         });
 
         socket.on('disconnect', () => {
@@ -198,6 +200,17 @@
                 $('.typing').fadeOut();
             }
         });
+
+        selectorCache.document.on('click', "#channelList #add-channel", function (e) {
+            e.preventDefault();
+            let channelname = prompt("Channel name");
+            socket.emit('addchannel', channelname);
+        });
+        
+        socket.on('addchannel', function (channelname) {
+            selectorCache.channelList.prepend($(`<li><a href="#" class="channel dropdown-item" id="${channelname}" data-channel="${channelname}">${channelname}</a></li>`));
+            $('#'+channelname).click();
+        })
 
     })(jQuery);
 </script>

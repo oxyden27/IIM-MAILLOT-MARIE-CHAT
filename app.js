@@ -96,6 +96,12 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('typing', data);
     });
 
+    socket.on('addchannel', (channelname) => {
+        socket.channelname = channelname;
+        redisClient.sadd('channels', socket.channelname);
+        socket.emit('addchannel', socket.channelname);
+    });
+
     socket.on('disconnect', () => {
         consoleLog('socket', 'disconnect', ('[' + socket.username + ']').bold + ' socket closed');
     });
@@ -105,4 +111,3 @@ http.listen(3000, () => console.log('Listening on ' + 'http://localhost:3000\n'.
 
 room = "abc123";
 io.to(room).emit('chat.message', 'what is going on, party people?');
-console.log('le log de test du turfu');
