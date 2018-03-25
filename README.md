@@ -52,4 +52,3 @@ $ yarn start
     "message": "Lorem ipsum...."
 }
 ```
-s
