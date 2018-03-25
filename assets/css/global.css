@@ -134,7 +134,12 @@ body .container-fluid .zone-messages .name-channel-message h2 {
 body .container-fluid .zone-messages .row {
   min-height: calc(100vh - 50px);
 }
-/* line 118, ../sass/global.scss */
+/* line 117, ../sass/global.scss */
+body .container-fluid .zone-messages .typing {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+/* line 123, ../sass/global.scss */
 body .container-fluid #message-form {
   position: absolute;
   width: 100%;
@@ -146,16 +151,16 @@ body .container-fluid #message-form {
   padding: 0px;
   height: 50px;
 }
-/* line 128, ../sass/global.scss */
+/* line 133, ../sass/global.scss */
 body .container-fluid #message-form .input-group-addon {
   border-left: 0px;
   padding: 0px;
 }
-/* line 133, ../sass/global.scss */
+/* line 138, ../sass/global.scss */
 body .container-fluid .border {
   border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 136, ../sass/global.scss */
+/* line 141, ../sass/global.scss */
 body .container-fluid #messages {
   padding-left: 20px;
   padding-right: 20px;
@@ -163,11 +168,11 @@ body .container-fluid #messages {
   overflow-y: auto;
   max-height: calc( 100vh - 150px);
 }
-/* line 142, ../sass/global.scss */
+/* line 147, ../sass/global.scss */
 body .container-fluid #messages .line-chat:nth-child(1) {
   margin-top: 20px;
 }
-/* line 145, ../sass/global.scss */
+/* line 150, ../sass/global.scss */
 body .container-fluid #messages .username-message {
   display: block;
   text-transform: capitalize;
@@ -182,7 +187,7 @@ body .container-fluid #messages .username-message {
   white-space: nowrap;
   padding-left: 50px;
 }
-/* line 159, ../sass/global.scss */
+/* line 164, ../sass/global.scss */
 body .container-fluid #messages .pic-username-message {
   background-image: url(../css/img/user-silhouette.png);
   width: 35px;
@@ -195,7 +200,7 @@ body .container-fluid #messages .pic-username-message {
   background-size: contain;
   background-repeat: no-repeat;
 }
-/* line 171, ../sass/global.scss */
+/* line 176, ../sass/global.scss */
 body .container-fluid #messages .message-chat {
   background-color: #f1f0f0;
   color: black;
@@ -209,13 +214,13 @@ body .container-fluid #messages .message-chat {
   font-size: 14px;
   vertical-align: sub;
 }
-/* line 185, ../sass/global.scss */
+/* line 190, ../sass/global.scss */
 body .container-fluid #messages .date-chat {
   font-size: 12px;
   vertical-align: sub;
   margin-left: 5Px;
 }
-/* line 191, ../sass/global.scss */
+/* line 196, ../sass/global.scss */
 body .container-fluid input#message {
   font-size: 14Px;
   width: 100%;
@@ -224,14 +229,14 @@ body .container-fluid input#message {
   height: 50px;
 }
 
-/* line 201, ../sass/global.scss */
+/* line 206, ../sass/global.scss */
 .container-fluid {
   margin-bottom: 70px;
   padding-right: 0px;
   padding-left: 0px;
 }
 
-/* line 207, ../sass/global.scss */
+/* line 212, ../sass/global.scss */
 #alert-status {
   position: fixed;
   top: 0;
@@ -239,7 +244,7 @@ body .container-fluid input#message {
   width: auto;
 }
 
-/* line 214, ../sass/global.scss */
+/* line 219, ../sass/global.scss */
 #message-form {
   position: fixed;
   width: 95%;
@@ -248,12 +253,12 @@ body .container-fluid input#message {
   right: 2.5%;
 }
 
-/* line 222, ../sass/global.scss */
+/* line 227, ../sass/global.scss */
 #message-form .form-group {
   width: 100%;
 }
 
-/* line 226, ../sass/global.scss */
+/* line 231, ../sass/global.scss */
 #message-form button {
   position: absolute;
   right: 0;
@@ -266,40 +271,40 @@ body .container-fluid input#message {
   font-size: 16px;
 }
 
-/* line 238, ../sass/global.scss */
+/* line 243, ../sass/global.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 242, ../sass/global.scss */
+/* line 247, ../sass/global.scss */
 .row {
   margin: 0px;
 }
 
-/* line 246, ../sass/global.scss */
+/* line 251, ../sass/global.scss */
 .container-fluid {
   background-color: white;
   color: black;
   margin: 0 auto;
 }
 
-/* line 252, ../sass/global.scss */
+/* line 257, ../sass/global.scss */
 .typing {
   display: none;
   margin-top: -40px;
 }
 
-/* line 256, ../sass/global.scss */
+/* line 261, ../sass/global.scss */
 .text-right {
   text-align: right;
 }
-/* line 259, ../sass/global.scss */
+/* line 264, ../sass/global.scss */
 .text-right .message-chat {
   background-color: #4267b2 !important;
   color: white !important;
 }
 
-/* line 264, ../sass/global.scss */
+/* line 269, ../sass/global.scss */
 #dropdownMenuButton {
   float: right;
   margin: auto;
@@ -307,7 +312,7 @@ body .container-fluid input#message {
   margin-right: 10px;
 }
 
-/* line 273, ../sass/global.scss */
+/* line 278, ../sass/global.scss */
 .open > .dropdown-menu {
   display: block;
   float: right;
@@ -315,4 +320,15 @@ body .container-fluid input#message {
   left: inherit;
   top: 47px;
   right: 9px;
+}
+
+/* line 287, ../sass/global.scss */
+#add-channel {
+  background-color: #4267b2;
+  color: white;
+}
+
+/* line 292, ../sass/global.scss */
+div#channelList {
+  padding-bottom: 0px;
 }

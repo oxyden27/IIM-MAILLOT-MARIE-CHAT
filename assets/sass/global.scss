@@ -114,6 +114,11 @@ body {
             .row {
                 min-height: calc(100vh - 50px);
             }
+            .typing{
+            padding-left: 10px;
+            padding-top: 10px;
+            }
+            
         }
         #message-form {
             position: absolute;
@@ -277,4 +282,13 @@ body {
     left: inherit;
     top: 47px;
     right: 9px;
+}
+
+#add-channel {
+	    background-color: #4267b2;
+    color: white;
+}
+
+div#channelList{
+    padding-bottom: 0px;
 }

@@ -1,3 +1,5 @@
+# Chat
+
 ## Setup
 
 Install /node_modules/
@@ -25,11 +27,13 @@ $ yarn start
 ```
 
 **chat.message**
+
 ```js
 {
     "username": "John Doe",
-    "message": "Lorem Ipsum..."
+    "message": "Lorem ispum..."
 }
+```
 
 ### Client
 
@@ -38,12 +42,14 @@ $ yarn start
 ```js
 {
     "username": "John Doe"
-}
+}  
 ```
 
 **chat.message**
+
 ```js
 {
-    "message": "Lorem Ipsum..."
+    "message": "Lorem ipsum...."
 }
 ```
+s
